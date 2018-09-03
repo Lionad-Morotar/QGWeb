@@ -2,6 +2,8 @@
 
 使用Gulp快速构建你的个人网站.
 
+![](https://i.imgur.com/kiZscmq.png)
+
 ## 运作流程
 
 项目运作的最简流程:
