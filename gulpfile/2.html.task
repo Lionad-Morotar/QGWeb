@@ -1,0 +1,48 @@
+const htmlMinOption = {
+    removeComments: true,
+    collapseWhitespace: true,
+    removeScriptTypeAttributes: true,
+    removeStyleLinkTypeAttributes: true,
+    minifyJS: true,
+    minifyCSS: true,
+}
+
+gulp.task('templateHTML', () => {
+    gulp.src([
+        'resources/article-content.html',
+        'resources/article-list.html',
+    ])
+        .pipe($.changed('dist/template', { hasChanged: $.changed.compareSha1Digest }))
+        .pipe(fileinclude({
+            prefix: '@@',
+            basepath: '@file',
+            indent: true
+        }))
+        .pipe($.defer())
+        .on('error', swallowError)
+        .pipe(gulp.dest('dist/template'))
+})
+
+const standardHTMLTemplates = [
+    '!resources/@standard.html',
+    '!resources/content/@standard.html',
+]
+
+gulp.task('html', ['templateHTML'], () => {
+    gulp.src([
+        'resources/**/*.html',
+        '!resources/article-content.html',
+        '!resources/article-list.html',
+        ...standardHTMLTemplates
+    ])
+        .pipe($.changed('dist', { hasChanged: $.changed.compareSha1Digest }))
+        .pipe(fileinclude({
+            prefix: '@@',
+            basepath: '@file',
+            indent: true
+        }))
+        .pipe($.htmlmin(htmlMinOption))
+        .pipe($.defer())
+        .on('error', swallowError)
+        .pipe(gulp.dest('dist'))
+})

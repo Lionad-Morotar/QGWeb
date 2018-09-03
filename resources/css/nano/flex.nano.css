@@ -1,0 +1,84 @@
+.flex1{
+	flex:1;
+}
+.fw {
+	flex-wrap: wrap;
+}
+.jcfs {
+	justify-content: flex-start !important;
+}
+.jcfe {
+	justify-content: flex-end !important;
+}
+.jcc {
+	justify-content: center !important;
+}
+.aifs {
+	align-items: flex-start !important;
+}
+.asfs {
+	align-self: flex-start !important;
+}
+.aife {
+	align-items: flex-end !important;
+}
+.asfe {
+	align-self: flex-end !important;
+}
+.aic {
+	align-items: center !important;
+}
+.asc {
+	align-self: center !important;
+}
+.flex{
+	display: flex;
+
+	align-items: center;
+}
+.flexc{
+	display: flex;
+
+	align-items: center;
+	justify-content: center;
+}
+.flexb{
+	display: flex;
+
+	justify-content: space-between;
+	align-items: center;
+}
+.flexa{
+	display: flex;
+	width: 100%;
+	justify-content: space-around;
+}
+.flexe {
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+}
+.flexColumn{
+	display: flex;
+	flex-direction: column;
+}
+.flexcColumn{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+.flexaColumn{
+	display: flex;
+	flex-direction: column;
+
+	justify-content: space-around;
+}
+.flexbColumn{
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+.fs0 {
+	flex-shrink: 0;
+}
