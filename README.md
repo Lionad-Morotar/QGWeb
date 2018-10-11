@@ -1,5 +1,15 @@
 # QGWeb 说明
 
+# Version 1.1
+
+## 更新内容
+
+* 考虑SSR页面, 单独提取
+* 拆分LESS变量文件, 方便全局less书写
+* 一些修复
+
+# Version 1.0
+
 使用Gulp快速构建你的个人网站.
 
 ![](https://i.imgur.com/kiZscmq.png)
