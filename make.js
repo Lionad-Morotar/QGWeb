@@ -37,7 +37,7 @@ function doConcat () {
 `
         handle.forEach((f, index) => {
             let c = fs.readFileSync(f)
-            result += c.toString() + index === handle.length - 1 ? '' : '\n\n\n'
+            result += c.toString() + (index === handle.length - 1 ? '' : '\n\n\n')
         })
         fs.writeFileSync('./gulpfile.babel.js', result)
     })

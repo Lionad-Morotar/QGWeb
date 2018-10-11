@@ -4,6 +4,7 @@ const gulpLoadPlugins = require('gulp-load-plugins')
 const del = require('del')
 const fileinclude = require('gulp-file-include')
 const imagemin = require('gulp-imagemin')
+const through = require('through2')
 
 let $ = gulpLoadPlugins()
 

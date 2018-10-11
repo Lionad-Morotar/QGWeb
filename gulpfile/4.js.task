@@ -1,3 +1,7 @@
+const TestJSFiles = [
+    'resources/js/@test.js',
+]
+
 // 转换ES6语法
 gulp.task('convertLogic', () => {
     gulp.src('resources/views/logic/es6/**/*.js')
@@ -11,7 +15,11 @@ gulp.task('convertLogic', () => {
 
 // 打包非插件JS
 gulp.task('js', () => {
-    gulp.src([ 'resources/js/*.js', '!resources/js/util/*.js' ])
+    gulp.src([ 
+        'resources/js/*.js',
+        '!resources/js/util/*.js',
+        ...TestJSFiles.map(x => '!' + x)
+    ])
         .pipe($.changed('.tmp/js', { hasChanged: $.changed.compareSha1Digest }))
         .pipe($.newer('.tmp/js'))
         .pipe($.sourcemaps.init())

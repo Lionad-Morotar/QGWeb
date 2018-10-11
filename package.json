@@ -1,14 +1,26 @@
 {
-  "name": "qweb",
+  "name": "qgweb",
   "version": "1.0.0",
   "description": "quick start you website building",
   "main": "server.js",
+  "watch": {
+    "make": {
+      "patterns": [
+        "gulpfile"
+      ],
+      "extensions": "task",
+      "quiet": false
+    }
+  },
   "scripts": {
+    "build_css": "node make && gulp css",
+    "build_templateHTML": "node make && gulp templateHTML",
+    "watch_make": "npm-watch make",
     "make": "node make",
-    "start": "node make & gulp build",
+    "build:dev": "node make && gulp build",
     "nginx": "taskkill /f /im nginx.exe && c: && cd nginx && nginx"
   },
-  "author": "lionad 1806234223@qq.com",
+  "author": "Lionad-Guirotar tangnad@qq.com",
   "license": "WTFPL",
   "dependencies": {
     "@babel/runtime": "^7.0.0"
