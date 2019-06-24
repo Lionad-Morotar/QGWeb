@@ -12,3 +12,5 @@ function swallowError(error) {
     console.error(error.toString())
     this.emit('end')
 }
+
+const CONFIG = require('./config.js').default

@@ -13,7 +13,7 @@ const makeList = [
     'server.js'
 ]
 
-let fileContent = `/** GulpFile Concat By ./gulpfile/*.js */\n\// eslint-disable-next-line rule`
+let fileContent = `/** GulpFile Concat By ./gulpfile/*.js */\n`
 
 function doConcat () {
     fs.readdir(gulpDir, function (err, dataList) {
@@ -33,7 +33,6 @@ function doConcat () {
                 return res
             }, [])
             .map((f, index, handle) => {
-                console.log(index, handle, f)
                 let c = fs.readFileSync(f)
                 fileContent += c.toString() + (index === handle.length - 1 ? '' : '\n\n\n')
             })

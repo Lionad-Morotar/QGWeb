@@ -50,7 +50,7 @@ gulp.task('css', ['moveDefineCSS'], () => {
         .pipe(gulp.dest('dist/css'))
 })
 
-gulp.task('nanoCSS', () => {
+CONFIG.nanocss && gulp.task('nanoCSS', () => {
     gulp.src([ 'resources/css/nano/*.{less,css}' ])
         .pipe($.newer('.tmp/nanoCSS'))
         .pipe($.sourcemaps.init())
