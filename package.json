@@ -18,7 +18,8 @@
     "watch_make": "npm-watch make",
     "make": "node make",
     "build:dev": "node make && gulp build",
-    "nginx": "taskkill /f /im nginx.exe && c: && cd nginx && nginx"
+    "nginx": "taskkill /f /im nginx.exe && c: && cd nginx && nginx",
+    "dev": "gulp"
   },
   "author": "Lionad-Guirotar tangnad@qq.com",
   "license": "WTFPL",
