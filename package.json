@@ -8,7 +8,7 @@
       "patterns": [
         "gulpfile"
       ],
-      "extensions": "task",
+      "extensions": "js",
       "quiet": false
     }
   },
