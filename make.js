@@ -1,45 +1,44 @@
-let fs = require('fs')
+const fs = require('fs')
 
-let gulpDir = './gulpfile'
+const gulpDir = './gulpfile'
 
-// fs.watch(gulpDir, (ev, file) => {
-//     doConcat()
-// })
+const makeList = [
+    'require.js',
+    'clean.js',
+    'html.js',
+    'css.js',
+    'js.js',
+    'image.js',
+    'resources.js',
+    'server.js'
+]
+
+let fileContent = `/** GulpFile Concat By ./gulpfile/*.js */\n\// eslint-disable-next-line rule`
 
 function doConcat () {
     fs.readdir(gulpDir, function (err, dataList) {
 
-        if (err) return
-
-        // wash file
-        let handle = [],
-            JSFile = dataList.filter(x => x.includes('.task'))
-        try {
-            JSFile.forEach(taskname => {
-                let filePath = gulpDir + '/' + taskname
-                let status = fs.statSync(filePath)
-                if (status.mode == 33206) {
-                    handle.push(filePath)
-                }
-            })
-        } catch (nofile) {
-            console.log(nofile)
+        if (err) {
+            console.error(err)
+            return
         }
 
-        // concat file
-        let result = `
-/** GulpFile Concat By ./gulpfile/*.task
-* 请不要在这个文件直接书写,
-* 项目运行需要gulpfile.babel.js由gulpfile/*.task打包而来,
-* 新的任务请在校验完毕之后转移值gulpfile文件夹
-*/
+        dataList
+            .filter(x => makeList.includes(x))
+            .sort((a, b) => makeList.indexOf(a) - makeList.indexOf(b))
+            .reduce((res, taskname) => {
+                const filePath = gulpDir + '/' + taskname
+                const status = fs.statSync(filePath)
+                status.mode == 33206 && res.push(filePath)
+                return res
+            }, [])
+            .map((f, index, handle) => {
+                console.log(index, handle, f)
+                let c = fs.readFileSync(f)
+                fileContent += c.toString() + (index === handle.length - 1 ? '' : '\n\n\n')
+            })
 
-`
-        handle.forEach((f, index) => {
-            let c = fs.readFileSync(f)
-            result += c.toString() + (index === handle.length - 1 ? '' : '\n\n\n')
-        })
-        fs.writeFileSync('./gulpfile.babel.js', result)
+        fs.writeFileSync('./gulpfile.babel.js', fileContent)
     })
 }
 

@@ -1,31 +1,19 @@
-# QGWeb 说明
-
-# Version 1.1
-
-## 更新内容
-
-* 考虑SSR页面, 单独提取
-* 拆分LESS变量文件, 方便全局less书写
-* 一些修复
-
-# Version 1.0
+# QGWeb - Quick Gulping your Websites
 
 使用Gulp快速构建你的个人网站.
 
-![](https://i.imgur.com/kiZscmq.png)
+![](logo.png)
 
 ## 运作流程
 
 项目运作的最简流程:
 
-0. 安装所需环境(VSCode,NodeJS,NPM)
-1. 拷贝项目代码至本地
-2. `npm install`
-3. `npm start`
+1. `npm install`
+2. `npm run dev`
 
 ## 项目环境简要
 
-### Gulp打包
+### 
 
 项目中将GulpFile分割成.task文件存放在gulpfile文件夹中, make.js负责将这些task文件按顺序打包成一个文件, 使用方式如下:
 
